@@ -9,8 +9,10 @@ class App extends Component {
     return (
       <React.Fragment>
         <Nav />
-        <Route path="/" exact component={Home} />
-        <Route path="/profile" exact component={Profile} />
+        <div className="body">
+          <Route path="/" exact component={Home} />
+          <Route path="/profile" exact component={Profile} />
+        </div>
       </React.Fragment>
     );
   }
