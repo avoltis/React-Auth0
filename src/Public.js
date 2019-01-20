@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 class Public extends Component {
-    state = {
-        message: ''
-    }
+  state = {
+    message: ""
+  };
 
   componentDidMount() {
     fetch("/public")

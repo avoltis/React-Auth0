@@ -1,12 +1,13 @@
-import React, { Component } from 'react';
-import { Route, Redirect } from 'react-router-dom';
-import Home from './Home';
-import Profile from './Profile';
-import Nav from './Nav';
-import Auth from './Auth/Auth';
-import Callback from './Callback';
-import Public from './Public';
-import Private from './Private';
+import React, { Component } from "react";
+import { Route, Redirect } from "react-router-dom";
+import Home from "./Home";
+import Profile from "./Profile";
+import Nav from "./Nav";
+import Auth from "./Auth/Auth";
+import Callback from "./Callback";
+import Public from "./Public";
+import Private from "./Private";
+import Courses from "./Courses";
 
 class App extends Component {
   constructor(props) {
@@ -15,7 +16,7 @@ class App extends Component {
   }
   render() {
     return (
-      <React.Fragment>
+      <>
         <Nav auth={this.auth} />
         <div className="body">
           <Route
@@ -48,8 +49,19 @@ class App extends Component {
               )
             }
           />
+          <Route
+            path="/courses"
+            render={props =>
+              this.auth.isAuthenticated() &&
+              this.auth.userHasScopes(["read:courses"]) ? (
+                <Courses auth={this.auth} {...props} />
+              ) : (
+                this.auth.login()
+              )
+            }
+          />
         </div>
-      </React.Fragment>
+      </>
     );
   }
 }

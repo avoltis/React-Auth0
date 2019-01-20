@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 class Profile extends Component {
-    state = {
-        profile: null,
-        error: ''
-    }
+  state = {
+    profile: null,
+    error: ""
+  };
 
   componentDidMount() {
     this.loadUserProfile();
