@@ -60,6 +60,7 @@ export default class Auth {
 
     _accessToken = authResult.accessToken;
     _idToken = authResult.idToken;
+    this.scheduleTokenRenewal();
   };
 
   isAuthenticated() {
@@ -91,5 +92,21 @@ export default class Auth {
   userHasScopes(scopes) {
     const grantedScopes = (_scopes || "").split(" ");
     return scopes.every(scope => grantedScopes.includes(scope));
+  }
+
+  renewToken(cb) {
+    this.auth0.checkSession({}, (err, result) => {
+      if (err) {
+        console.log('Error: ' + err.error - err.errorDescription);
+      } else {
+        this.setSession(result);
+      }
+      if (cb) cb(err, result);
+    })
+  }
+
+  scheduleTokenRenewal() {
+    const delay = _expiresAt - Date.now();
+    if(delay > 0) setTimeout(() => this.renewToken(), delay);
   }
 }
