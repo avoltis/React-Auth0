@@ -1,7 +1,7 @@
-import React from "react";
-import { Route } from "react-router-dom";
-import PropTypes from "prop-types";
-import AuthContext from "./AuthContext";
+import React from 'react';
+import { Route } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import AuthContext from './AuthContext';
 
 function PrivateRoute({ component: Component, scopes, ...rest }) {
   return (
@@ -18,7 +18,7 @@ function PrivateRoute({ component: Component, scopes, ...rest }) {
               return (
                 <h1>
                   Unauthorized - You need the following scope(s) to view this
-                  page: {scopes.join(",")}.
+                  page: {scopes.join(',')}.
                 </h1>
               );
             }

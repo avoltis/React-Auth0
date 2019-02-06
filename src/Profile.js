@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 class Profile extends Component {
   state = {
     profile: null,
-    error: ""
+    error: ''
   };
 
   componentDidMount() {

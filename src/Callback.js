@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 class Callback extends Component {
   componentDidMount = () => {
@@ -6,7 +6,7 @@ class Callback extends Component {
     if (/access_token|id_token|error/.test(this.props.location.hash)) {
       this.props.auth.handleAuthentication();
     } else {
-      throw new Error("Invalid callback URL.");
+      throw new Error('Invalid callback URL.');
     }
   };
   render() {

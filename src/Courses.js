@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 class Courses extends Component {
   state = {
@@ -6,22 +6,22 @@ class Courses extends Component {
   };
 
   componentDidMount() {
-    fetch("/course", {
+    fetch('/course', {
       headers: { Authorization: `Bearer ${this.props.auth.getAccessToken()}` }
     })
       .then(response => {
         if (response.ok) return response.json();
-        throw new Error("Network response was not ok.");
+        throw new Error('Network response was not ok.');
       })
       .then(response => this.setState({ courses: response.courses }))
       .catch(error => this.setState({ message: error.message }));
 
-    fetch("/admin", {
+    fetch('/admin', {
       headers: { Authorization: `Bearer ${this.props.auth.getAccessToken()}` }
     })
       .then(response => {
         if (response.ok) return response.json();
-        throw new Error("Network response was not ok.");
+        throw new Error('Network response was not ok.');
       })
       .then(response => console.log(response))
       .catch(error => this.setState({ message: error.message }));
